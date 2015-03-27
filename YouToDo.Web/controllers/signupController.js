@@ -5,7 +5,7 @@ youToDoApp.controller('signupController', ['$scope', '$injector', '$timeout', 'a
     $scope.message = "";
 
     $scope.registration = {
-        userName: "",
+        Email: "",
         password: "",
         confirmPassword: ""
     };

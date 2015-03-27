@@ -23,6 +23,7 @@ namespace YouToDo
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "http://youtodo.tekoone.ru");
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Credentials", "true");
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {
                 HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "POST, PUT, DELETE");

@@ -23,7 +23,8 @@ youToDoApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 // var serviceBase = 'localhost:30000';
-var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
+//var serviceBase = 'http://ngauthenticationapi.azurewebsites.net/';
+var serviceBase = 'http://youtodo.tekoone.ru:54000/';
 youToDoApp.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase
 });

@@ -6,12 +6,12 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
 
     var _authentication = {
         isAuth: false,
-        userName: ""
+        Email: ""
     };
 
     var _externalAuthData = {
         provider: "",
-        userName: "",
+        Email: "",
         externalAccessToken: ""
     };
 
@@ -27,16 +27,16 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
 
     var _login = function (loginData) {
 
-        var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
+        var data = "grant_type=password&username=" + loginData.Email + "&password=" + loginData.password;
 
         var deferred = $q.defer();
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
+            localStorageService.set('authorizationData', { token: response.access_token, Email: loginData.Email });
 
             _authentication.isAuth = true;
-            _authentication.userName = loginData.userName;
+            _authentication.Email = loginData.Email;
 
             deferred.resolve(response);
 
@@ -54,7 +54,7 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
         localStorageService.remove('authorizationData');
 
         _authentication.isAuth = false;
-        _authentication.userName = "";
+        _authentication.Email = "";
 
     };
 
@@ -63,7 +63,7 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
         var authData = localStorageService.get('authorizationData');
         if (authData) {
             _authentication.isAuth = true;
-            _authentication.userName = authData.userName;
+            _authentication.Email = authData.Email;
         }
 
     };
@@ -74,10 +74,10 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
 
         $http.get(serviceBase + 'api/account/ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName });
+            localStorageService.set('authorizationData', { token: response.access_token, Email: response.Email });
 
             _authentication.isAuth = true;
-            _authentication.userName = response.userName;
+            _authentication.Email = response.Email;
 
             deferred.resolve(response);
 
@@ -96,10 +96,10 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
 
         $http.post(serviceBase + 'api/account/registerexternal', registerExternalData).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName });
+            localStorageService.set('authorizationData', { token: response.access_token, Email: response.Email });
 
             _authentication.isAuth = true;
-            _authentication.userName = response.userName;
+            _authentication.Email = response.Email;
 
             deferred.resolve(response);
 
