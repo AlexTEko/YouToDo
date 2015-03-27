@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Register</legend>
+                <div class="form-group">
+                    <div class="col-md-12 controls">
+                        <input id="username" type="text" placeholder="Username" class="form-control input-md"
+                               data-ng-model="registration.userName" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 controls">
+                        <input id="passwordA" type="password" placeholder="Password" class="form-control input-md"
+                               data-ng-model="registration.password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 controls">
+                        <input id="passwordB" type="password" placeholder="Confirm password"
+                               class="form-control input-md" data-ng-model="registration.confirmPassword" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 controls text-center">
+                        <button id="registerbtn" class="btn btn-primary" data-ng-click="signUp()">Register</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                        {{message}}
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
