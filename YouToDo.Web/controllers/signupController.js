@@ -5,7 +5,7 @@ youToDoApp.controller('signupController', ['$scope', '$injector', '$timeout', 'a
     $scope.message = "";
 
     $scope.registration = {
-        userName: "",
+        email: "",
         password: "",
         confirmPassword: ""
     };
@@ -21,9 +21,9 @@ youToDoApp.controller('signupController', ['$scope', '$injector', '$timeout', 'a
         },
          function (response) {
              var errors = [];
-             for (var key in response.data.modelState) {
-                 for (var i = 0; i < response.data.modelState[key].length; i++) {
-                     errors.push(response.data.modelState[key][i]);
+             for (var key in response.data.ModelState) {
+                 for (var i = 0; i < response.data.ModelState[key].length; i++) {
+                     errors.push(response.data.ModelState[key][i]);
                      //errors.push("error");
                  }
              }
