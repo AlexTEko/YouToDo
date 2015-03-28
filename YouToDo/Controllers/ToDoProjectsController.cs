@@ -12,18 +12,19 @@ using YouToDo.Models;
 
 namespace YouToDo.Controllers
 {
+    //[Authorize]  //Only authorized users
     public class ToDoProjectsController : ApiController
     {
         private YouToDoContext db = new YouToDoContext();
 
-        // GET: api/ToDoProjects
+        // GET: api/projects
         [Route("api/projects")]
         public IQueryable<ToDoProject> GetToDoProjects()
         {
             return db.ToDoProjects;
         }
 
-        // GET: api/ToDoProjects/5
+        // GET: api/projects/5
         [Route("api/projects/{id}")]
         [ResponseType(typeof(ToDoProject))]
         public IHttpActionResult GetToDoProject(int id)

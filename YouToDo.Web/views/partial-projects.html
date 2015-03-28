@@ -1,0 +1,40 @@
+﻿<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <strong>Projects:</strong>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in projects">
+                    <td>{{$index + 1}}</td>
+                    <td class="text-uppercase">{{project}}</td>
+                    <td>{{project}}</td>
+                    <td><button class="btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-4 controls">
+                        <input id="projectName" type="text" placeholder="Enter new project name" class="form-control input-md"
+                               data-ng-model="project" required autofocus>
+                    </div>
+                    <div class="col-md-1 controls text-center">
+                        <button id="addButton" class="btn btn-primary" type="submit" data-ng-click="addProject()">Create</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

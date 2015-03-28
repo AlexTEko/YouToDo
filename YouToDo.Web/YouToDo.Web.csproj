@@ -64,15 +64,18 @@
     <Content Include="app.js" />
     <Content Include="controllers\indexController.js" />
     <Content Include="controllers\loginController.js" />
+    <Content Include="controllers\projectsController.js" />
     <Content Include="controllers\signupController.js" />
     <Content Include="controllers\tasksController.js" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="index.html" />
     <Content Include="services\authInterceptorService.js" />
     <Content Include="services\authService.js" />
+    <Content Include="services\projectsService.js" />
     <Content Include="services\tasksService.js" />
     <Content Include="views\partial-login.html" />
     <Content Include="views\partial-mytasks.html" />
+    <Content Include="views\partial-projects.html" />
     <Content Include="views\partial-register.html" />
   </ItemGroup>
   <ItemGroup>

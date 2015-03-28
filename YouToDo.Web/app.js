@@ -15,6 +15,11 @@ youToDoApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/partial-login.html',
             controller: 'loginController'
         })
+        .state('projects', {
+            url: '/projects',
+            templateUrl: 'views/partial-projects.html',
+            controller: 'projectsController'
+        })
         .state('register', {
             url: '/register',
             templateUrl: 'views/partial-register.html',

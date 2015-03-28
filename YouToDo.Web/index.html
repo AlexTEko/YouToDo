@@ -17,7 +17,8 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li><a ng-show="authentication.isAuth" ui-sref="mytasks">My Tasks <span class="badge">{{countTasks()}}</span></a></li>
+                <li><a ng-show="authentication.isAuth" ui-sref="projects">Projects </a></li>
+                <li><a ng-show="authentication.isAuth" ui-sref="mytasks">My Tasks <span class="badge">{{countTasks()}}</span></a></li>               
                 <li class="dropdown" ng-hide="!authentication.isAuth">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                        aria-expanded="false">{{authentication.userName}}<span class="caret"></span></a>
@@ -53,9 +54,11 @@
 <script src="services/authInterceptorService.js" type="application/javascript"></script>
 <script src="services/authService.js" type="application/javascript"></script>
 <script src="services/tasksService.js" type="application/javascript"></script>
+<script src="services/projectsService.js" type="application/javascript"></script>
 <script src="controllers/loginController.js" type="application/javascript"></script>
 <script src="controllers/signupController.js" type="application/javascript"></script>
 <script src="controllers/indexController.js" type="application/javascript"></script>
 <script src="controllers/tasksController.js" type="application/javascript"></script>
+<script src="controllers/projectsController.js" type="application/javascript"></script>
 </body>
 </html>
