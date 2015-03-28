@@ -12,7 +12,7 @@ using YouToDo.Models;
 
 namespace YouToDo.Controllers
 {
-    //[Authorize]  //Only authorized users
+    [Authorize]  //Only authorized users
     public class ToDoProjectsController : ApiController
     {
         private YouToDoContext db = new YouToDoContext();
