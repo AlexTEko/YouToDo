@@ -14,8 +14,9 @@ namespace YouToDo.Models
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
-        public YouToDoContext() : base("name=YouToDoContext")
+
+        public YouToDoContext()
+            : base("name=DefaultConnection")
         {
         }
 
