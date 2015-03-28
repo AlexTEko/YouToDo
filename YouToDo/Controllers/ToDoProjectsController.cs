@@ -17,12 +17,14 @@ namespace YouToDo.Controllers
         private YouToDoContext db = new YouToDoContext();
 
         // GET: api/ToDoProjects
+        [Route("api/projects")]
         public IQueryable<ToDoProject> GetToDoProjects()
         {
             return db.ToDoProjects;
         }
 
         // GET: api/ToDoProjects/5
+        [Route("api/projects/{id}")]
         [ResponseType(typeof(ToDoProject))]
         public IHttpActionResult GetToDoProject(int id)
         {
@@ -36,6 +38,7 @@ namespace YouToDo.Controllers
         }
 
         // PUT: api/ToDoProjects/5
+        [Route("api/projects/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutToDoProject(int id, ToDoProject toDoProject)
         {
@@ -71,6 +74,7 @@ namespace YouToDo.Controllers
         }
 
         // POST: api/ToDoProjects
+        [Route("api/projects")]
         [ResponseType(typeof(ToDoProject))]
         public IHttpActionResult PostToDoProject(ToDoProject toDoProject)
         {
@@ -82,10 +86,11 @@ namespace YouToDo.Controllers
             db.ToDoProjects.Add(toDoProject);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = toDoProject.Id }, toDoProject);
+            return CreatedAtRoute("DefaultApi", new { controller = "projects", id = toDoProject.Id }, toDoProject);
         }
 
         // DELETE: api/ToDoProjects/5
+        [Route("api/projects/{id}")]
         [ResponseType(typeof(ToDoProject))]
         public IHttpActionResult DeleteToDoProject(int id)
         {
