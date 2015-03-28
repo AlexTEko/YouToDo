@@ -17,12 +17,14 @@ namespace YouToDo.Controllers
         private YouToDoContext db = new YouToDoContext();
 
         // GET: api/ToDoTasks
+        [Route("api/tasks")]
         public IQueryable<ToDoTask> GetToDoTasks()
         {
             return db.ToDoTasks;
         }
 
         // GET: api/ToDoTasks/5
+        [Route("api/tasks/{id}")]
         [ResponseType(typeof(ToDoTask))]
         public IHttpActionResult GetToDoTask(int id)
         {
@@ -36,6 +38,7 @@ namespace YouToDo.Controllers
         }
 
         // PUT: api/ToDoTasks/5
+        [Route("api/tasks/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutToDoTask(int id, ToDoTask toDoTask)
         {
@@ -67,10 +70,11 @@ namespace YouToDo.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { controller = "tasks", id = toDoTask.Id }, toDoTask);
         }
 
         // POST: api/ToDoTasks
+        [Route("api/tasks")]
         [ResponseType(typeof(ToDoTask))]
         public IHttpActionResult PostToDoTask(ToDoTask toDoTask)
         {
@@ -82,10 +86,11 @@ namespace YouToDo.Controllers
             db.ToDoTasks.Add(toDoTask);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = toDoTask.Id }, toDoTask);
+            return CreatedAtRoute("DefaultApi", new { controller = "tasks", id = toDoTask.Id }, toDoTask);
         }
 
         // DELETE: api/ToDoTasks/5
+        [Route("api/tasks/{id}")]
         [ResponseType(typeof(ToDoTask))]
         public IHttpActionResult DeleteToDoTask(int id)
         {
