@@ -71,7 +71,7 @@ namespace YouToDo.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return CreatedAtRoute("DefaultApi", new { controller = "projects", id = toDoProject.Id }, toDoProject);
         }
 
         // POST: api/ToDoProjects
