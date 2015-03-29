@@ -12,6 +12,7 @@ using YouToDo.Models;
 
 namespace YouToDo.Controllers
 {
+    [Authorize]
     public class ToDoProgressesController : ApiController
     {
         private YouToDoContext db = new YouToDoContext();
@@ -23,16 +24,34 @@ namespace YouToDo.Controllers
         }
 
         // GET: api/ToDoProgresses/5
+        [Route("api/progress/{id}")]
         [ResponseType(typeof(ToDoProgress))]
         public IHttpActionResult GetToDoProgress(int id)
         {
-            ToDoProgress toDoProgress = db.ToDoProgresses.Find(id);
-            if (toDoProgress == null)
+            //ToDoProgress toDoProgress = db.ToDoProgresses.Find(id);
+            var UserTasksId = db.ToDoProgresses.Where(c => c.UserId == id);
+            List<ToDoTask> toDoTasks = new List<ToDoTask>();
+            List<int> TaskIds = new List<int>();
+            foreach (var UserTaskId in UserTasksId)
+            {
+                TaskIds.Add(UserTaskId.TaskId);
+            }
+
+            foreach (int TaskId in TaskIds)
+            {
+                ToDoTask toDoTask = db.ToDoTasks.Find(TaskId);
+                if (toDoTask != null)
+                {
+                    toDoTasks.Add(toDoTask);
+                }
+            }
+
+            if (toDoTasks == null)
             {
                 return NotFound();
             }
 
-            return Ok(toDoProgress);
+            return Ok(toDoTasks);
         }
 
         // PUT: api/ToDoProgresses/5
@@ -71,6 +90,7 @@ namespace YouToDo.Controllers
         }
 
         // POST: api/ToDoProgresses
+        [Route("api/progress")]
         [ResponseType(typeof(ToDoProgress))]
         public IHttpActionResult PostToDoProgress(ToDoProgress toDoProgress)
         {
@@ -82,7 +102,7 @@ namespace YouToDo.Controllers
             db.ToDoProgresses.Add(toDoProgress);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = toDoProgress.Id }, toDoProgress);
+            return CreatedAtRoute("DefaultApi", new { controller = "progress", id = toDoProgress.Id }, toDoProgress);
         }
 
         // DELETE: api/ToDoProgresses/5
