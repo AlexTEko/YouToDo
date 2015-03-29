@@ -18,6 +18,7 @@ namespace YouToDo.Controllers
         private YouToDoContext db = new YouToDoContext();
 
         // GET: api/ToDoProgresses
+        [Route("api/progress")]
         public IQueryable<ToDoProgress> GetToDoProgresses()
         {
             return db.ToDoProgresses;
@@ -26,10 +27,10 @@ namespace YouToDo.Controllers
         // GET: api/ToDoProgresses/5
         [Route("api/progress/{id}")]
         [ResponseType(typeof(ToDoProgress))]
-        public IHttpActionResult GetToDoProgress(int id)
+        public IHttpActionResult GetToDoProgress(string id)
         {
             //ToDoProgress toDoProgress = db.ToDoProgresses.Find(id);
-            var UserTasksId = db.ToDoProgresses.Where(c => c.UserId == id);
+            var UserTasksId = db.ToDoProgresses.Where(c => c.UserId.Equals(id));
             List<ToDoTask> toDoTasks = new List<ToDoTask>();
             List<int> TaskIds = new List<int>();
             foreach (var UserTaskId in UserTasksId)
