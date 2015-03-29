@@ -1,17 +1,22 @@
 ﻿'use strict';
 youToDoApp.factory('tasksService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
 
+   // var userId;
+
     var serviceBase = ngAuthSettings.apiServiceBaseUri;
 
     var tasksServiceFactory = {};
 
-    $http.get(serviceBase + 'api/account/userInfo').then(function (results) {
-        return results;
-    });
+
+
+    
 
     var _getTasks = function () {
-        return $http.get(serviceBase + 'api/tasks'+).then(function (results) {
-            return results;
+        return $http.get(serviceBase + 'api/account/userinfo').then(function (results) {
+            //userId = results.data.Id;
+            return $http.get(serviceBase + 'api/progress/' + results.data.Id).then(function (results) {
+                return results;
+            });
         });
     };
 
