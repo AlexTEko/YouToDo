@@ -21,9 +21,11 @@ namespace YouToDo.Controllers
         [Route("api/projects")]
         public IQueryable<ToDoProject> GetToDoProjects()
         {
-            if (!User.IsInRole("Admin"))
-                return null;
-            return db.ToDoProjects;
+            if (User.IsInRole("Admin"))
+                return db.ToDoProjects;
+            if (User.IsInRole("Manager"))
+                return db.ToDoProjects.Where(x => x.ProjectLeader.Equals(User.Identity.Name));
+            return null;
         }
 
         // GET: api/projects/5
