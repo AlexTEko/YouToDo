@@ -67,6 +67,74 @@ namespace YouToDo.Controllers
             };
         }
 
+        [Route("addmanager")]
+        public IHttpActionResult AddManager(string name)
+        {
+            if (!User.IsInRole("Admin"))
+                return BadRequest("You are not authorized!");
+
+            var userManager = HttpContext.Current
+                .GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            var roleManager = HttpContext.Current
+                .GetOwinContext().Get<ApplicationRoleManager>();
+
+            const string roleName = "Manager";
+
+            //Create Role Admin if it does not exist
+            var role = roleManager.FindByName(roleName);
+            if (role == null)
+            {
+                role = new ApplicationRole(roleName);
+                var roleresult = roleManager.Create(role);
+            }
+
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                return BadRequest("User not found!");
+            }
+
+            // Add user admin to Role Admin if not already added
+            var rolesForUser = userManager.GetRoles(user.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                var result = userManager.AddToRole(user.Id, role.Name);
+            }
+
+            return Ok(userManager.IsInRole(user.Id, "Manager"));
+        }
+
+        [Route("removemanager")]
+        public IHttpActionResult RemoveManager(string name)
+        {
+            if (!User.IsInRole("Admin"))
+                return BadRequest("You are not authorized!");
+
+            var userManager = HttpContext.Current
+                .GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            var roleManager = HttpContext.Current
+                .GetOwinContext().Get<ApplicationRoleManager>();
+
+            //Create Role Admin if it does not exist
+
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                return BadRequest("User not found!");
+            }
+
+            // Add user admin to Role Admin if not already added
+            var rolesForUser = userManager.GetRoles(user.Id);
+            if (rolesForUser.Contains("Manager"))
+            {
+                var result = userManager.RemoveFromRole(user.Id, "Manager");
+            }
+
+            return Ok(!userManager.IsInRole(user.Id, "Manager"));
+        }
+
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()
@@ -79,7 +147,7 @@ namespace YouToDo.Controllers
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
-            IdentityUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            ApplicationUser user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             if (user == null)
             {
@@ -88,7 +156,7 @@ namespace YouToDo.Controllers
 
             List<UserLoginInfoViewModel> logins = new List<UserLoginInfoViewModel>();
 
-            foreach (IdentityUserLogin linkedAccount in user.Logins)
+            foreach (ApplicationUserLogin linkedAccount in user.Logins)
             {
                 logins.Add(new UserLoginInfoViewModel
                 {
