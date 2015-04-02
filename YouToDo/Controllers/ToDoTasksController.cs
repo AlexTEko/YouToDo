@@ -35,6 +35,9 @@ namespace YouToDo.Controllers
                 return NotFound();
             }
 
+            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
+                return BadRequest("You are not authorized");
+
             return Ok(toDoTask);
         }
 
@@ -54,6 +57,9 @@ namespace YouToDo.Controllers
             }
 
             db.Entry(toDoTask).State = EntityState.Modified;
+
+            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")) && (!toDoTask.AssignedTo.Equals(User.Identity.Name)))
+                return BadRequest("You are not authorized");
 
             try
             {
@@ -84,6 +90,9 @@ namespace YouToDo.Controllers
                 return BadRequest(ModelState);
             }
 
+            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
+                return BadRequest("You are not authorized");
+
             toDoTask.TaskStatus = "Assigned";
 
             db.ToDoTasks.Add(toDoTask);
@@ -102,6 +111,9 @@ namespace YouToDo.Controllers
             {
                 return NotFound();
             }
+
+            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
+                return BadRequest("You are not authorized");
 
             db.ToDoTasks.Remove(toDoTask);
             db.SaveChanges();
