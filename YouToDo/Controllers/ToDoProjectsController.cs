@@ -21,8 +21,6 @@ namespace YouToDo.Controllers
         [Route("api/projects")]
         public IQueryable<ToDoProject> GetToDoProjects()
         {
-            if (!User.IsInRole("Admin"))
-                return null;
             return db.ToDoProjects;
         }
 
@@ -36,8 +34,7 @@ namespace YouToDo.Controllers
             {
                 return NotFound();
             }
-            if (!User.Identity.Name.Equals(toDoProject.ProjectLeader))
-                return BadRequest("You are not project leader of this project");
+
             return Ok(toDoProject);
         }
 
@@ -55,9 +52,6 @@ namespace YouToDo.Controllers
             {
                 return BadRequest();
             }
-
-            if (!User.Identity.Name.Equals(toDoProject.ProjectLeader))
-                return BadRequest("You are not project leader of this project");
 
             db.Entry(toDoProject).State = EntityState.Modified;
 
@@ -90,9 +84,6 @@ namespace YouToDo.Controllers
                 return BadRequest(ModelState);
             }
 
-            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
-                return BadRequest("You are not a Manager");
-
             db.ToDoProjects.Add(toDoProject);
             db.SaveChanges();
 
@@ -109,9 +100,6 @@ namespace YouToDo.Controllers
             {
                 return NotFound();
             }
-
-            if ((!User.Identity.Name.Equals(toDoProject.ProjectLeader)) && (!User.IsInRole("Admin")))
-                return BadRequest("You are not project leader of this project");
 
             db.ToDoProjects.Remove(toDoProject);
             db.SaveChanges();

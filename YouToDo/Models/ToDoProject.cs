@@ -13,7 +13,7 @@ namespace YouToDo.Models
 
         public string Description { get; set; }
 
-        public string ProjectLeader { get; set; }
+        public int ProjectLeader { get; set; }
 
     }
 }
