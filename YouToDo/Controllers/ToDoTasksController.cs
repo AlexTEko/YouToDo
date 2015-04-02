@@ -21,7 +21,7 @@ namespace YouToDo.Controllers
         [Route("api/tasks")]
         public IQueryable<ToDoTask> GetToDoTasks()
         {
-            return db.ToDoTasks;
+            return db.ToDoTasks.Where(x =>x.AssignedTo.Equals(RequestContext.Principal.Identity.Name));
         }
 
         // GET: api/ToDoTasks/5
@@ -83,6 +83,8 @@ namespace YouToDo.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            toDoTask.TaskStatus = "Assigned";
 
             db.ToDoTasks.Add(toDoTask);
             db.SaveChanges();

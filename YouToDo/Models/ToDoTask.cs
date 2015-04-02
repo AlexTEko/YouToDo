@@ -11,9 +11,15 @@ namespace YouToDo.Models
 
         public int Project { get; set; }
 
+        public string AssignedTo { get; set; }
+
         public int TaskPriority { get; set; }
 
         public string TaskText { get; set; }
+
+        public string TaskDescription { get; set; }
+
+        public string TaskComment { get; set; }
 
         public DateTime TaskDateStart { get; set; }
 

@@ -20,13 +20,10 @@ namespace YouToDo.Models
         {
         }
 
-        public System.Data.Entity.DbSet<YouToDo.Models.ToDoUsers> ToDoUsers { get; set; }
 
         public System.Data.Entity.DbSet<YouToDo.Models.ToDoProject> ToDoProjects { get; set; }
 
         public System.Data.Entity.DbSet<YouToDo.Models.ToDoTask> ToDoTasks { get; set; }
-
-        public System.Data.Entity.DbSet<YouToDo.Models.ToDoProgress> ToDoProgresses { get; set; }
     
     }
 }
