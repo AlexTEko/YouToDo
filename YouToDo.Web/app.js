@@ -29,6 +29,11 @@ youToDoApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/users',
             templateUrl: 'views/partial-users.html',
             controller: 'usersController'
+        })
+        .state('newProject', {
+            url: '/newProject',
+            templateUrl: 'views/partial-newProject.html',
+            controller: 'newProjectController'
         });
 });
 

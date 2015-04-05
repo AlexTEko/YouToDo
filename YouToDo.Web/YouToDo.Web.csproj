@@ -64,6 +64,7 @@
     <Content Include="app.js" />
     <Content Include="controllers\indexController.js" />
     <Content Include="controllers\loginController.js" />
+    <Content Include="controllers\newProjectController.js" />
     <Content Include="controllers\projectsController.js" />
     <Content Include="controllers\signupController.js" />
     <Content Include="controllers\tasksController.js" />
