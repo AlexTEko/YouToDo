@@ -16,6 +16,9 @@ using Microsoft.Owin.Security.OAuth;
 using YouToDo.Models;
 using YouToDo.Providers;
 using YouToDo.Results;
+using System.Web.Profile;
+using System.Linq;
+using System.Web.Security;
 
 namespace YouToDo.Controllers
 {
@@ -25,6 +28,7 @@ namespace YouToDo.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -133,6 +137,22 @@ namespace YouToDo.Controllers
             }
 
             return Ok(!userManager.IsInRole(user.Id, "Manager"));
+        }
+
+        // GET api/Account/list
+        [Route("list")]
+        public List<string> GetList()
+        {
+            var userManager = HttpContext.Current
+                .GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            ApplicationDbContext UsersContext = new ApplicationDbContext();
+            List<string> list = new List<string>();
+            List<ApplicationUser> applicationusers = UsersContext.Users.ToList();
+            foreach (ApplicationUser applicationuser in applicationusers)
+                if ((!userManager.IsInRole(applicationuser.Id, "Admin")) && (!userManager.IsInRole(applicationuser.Id, "Manager")))
+                    list.Add(applicationuser.Email);
+            return list;
         }
 
         // POST api/Account/Logout
