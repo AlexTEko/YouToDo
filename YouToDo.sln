@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouToDo.API", "YouToDo\YouToDo.API.csproj", "{AF7D2D15-6CC2-4D52-AEDC-D8EF2BA9B6F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouToDo", "YouToDo\YouToDo.csproj", "{AF7D2D15-6CC2-4D52-AEDC-D8EF2BA9B6F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouToDo.Web", "YouToDo.Web\YouToDo.Web.csproj", "{F8B305E4-FC34-4058-9A1D-2C822B5EA3CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouToDo.Web (Legacy)", "YouToDo.Web\YouToDo.Web (Legacy).csproj", "{F8B305E4-FC34-4058-9A1D-2C822B5EA3CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

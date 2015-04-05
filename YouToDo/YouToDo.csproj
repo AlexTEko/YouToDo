@@ -215,9 +215,19 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\angular-local-storage.min.js" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Scripts\controllers\indexController.js" />
+    <Content Include="Scripts\controllers\loginController.js" />
+    <Content Include="Scripts\controllers\newProjectController.js" />
+    <Content Include="Scripts\controllers\projectsController.js" />
+    <Content Include="Scripts\controllers\signupController.js" />
+    <Content Include="Scripts\controllers\tasksController.js" />
+    <Content Include="Scripts\controllers\usersController.js" />
+    <Content Include="Css\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -255,6 +265,17 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\services\authInterceptorService.js" />
+    <Content Include="Scripts\services\authService.js" />
+    <Content Include="Scripts\services\projectsService.js" />
+    <Content Include="Scripts\services\tasksService.js" />
+    <Content Include="Scripts\services\usersService.js" />
+    <Content Include="partial\partial-login.html" />
+    <Content Include="partial\partial-mytasks.html" />
+    <Content Include="partial\partial-newProject.html" />
+    <Content Include="partial\partial-projects.html" />
+    <Content Include="partial\partial-register.html" />
+    <Content Include="partial\partial-users.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
