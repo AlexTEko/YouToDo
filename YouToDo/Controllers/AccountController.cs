@@ -145,7 +145,7 @@ namespace YouToDo.Controllers
         {
             var userManager = HttpContext.Current
                 .GetOwinContext().GetUserManager<ApplicationUserManager>();
-
+            // I don't know what I am doing here
             ApplicationDbContext UsersContext = new ApplicationDbContext();
             List<string> list = new List<string>();
             List<ApplicationUser> applicationusers = UsersContext.Users.ToList();

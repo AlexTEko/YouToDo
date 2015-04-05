@@ -67,16 +67,19 @@
     <Content Include="controllers\projectsController.js" />
     <Content Include="controllers\signupController.js" />
     <Content Include="controllers\tasksController.js" />
+    <Content Include="controllers\usersController.js" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="index.html" />
     <Content Include="services\authInterceptorService.js" />
     <Content Include="services\authService.js" />
     <Content Include="services\projectsService.js" />
     <Content Include="services\tasksService.js" />
+    <Content Include="services\usersService.js" />
     <Content Include="views\partial-login.html" />
     <Content Include="views\partial-mytasks.html" />
     <Content Include="views\partial-projects.html" />
     <Content Include="views\partial-register.html" />
+    <Content Include="views\partial-users.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
