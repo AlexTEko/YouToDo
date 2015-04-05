@@ -1,5 +1,8 @@
 ﻿'use strict';
-youToDoApp.controller('projectsController', ['$scope', 'projectsService', function ($scope, projectsService) {
+youToDoApp.controller('projectsController', ['$scope', '$injector', 'projectsService', function ($scope, $injector, projectsService) {
+
+    var state = $injector.get('$state');
+
     $scope.projects = [];
 
     projectsService.getProjects().then(function (results) {
@@ -7,4 +10,8 @@ youToDoApp.controller('projectsController', ['$scope', 'projectsService', functi
     }, function (error) {
         //alert(error.data.message);
     });
+
+    $scope.addProject = function () {
+        state.go('newProject');
+    };
 }]);
