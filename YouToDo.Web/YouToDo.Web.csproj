@@ -75,6 +75,7 @@
     <Content Include="services\tasksService.js" />
     <Content Include="views\partial-login.html" />
     <Content Include="views\partial-mytasks.html" />
+    <Content Include="views\partial-newProject.html" />
     <Content Include="views\partial-projects.html" />
     <Content Include="views\partial-register.html" />
   </ItemGroup>
