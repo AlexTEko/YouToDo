@@ -216,6 +216,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\services\authInterceptorService.js" />
     <Content Include="Scripts\services\authService.js" />
+    <Content Include="Scripts\services\newProjectService.js" />
     <Content Include="Scripts\services\projectsService.js" />
     <Content Include="Scripts\services\tasksService.js" />
     <Content Include="Scripts\services\usersService.js" />
