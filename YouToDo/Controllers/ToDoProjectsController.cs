@@ -95,6 +95,7 @@ namespace YouToDo.Controllers
             if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
                 return BadRequest("You are not a Manager");
 
+            toDoProject.ProjectLeader = User.Identity.Name;
             db.ToDoProjects.Add(toDoProject);
             db.SaveChanges();
 
