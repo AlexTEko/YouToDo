@@ -71,7 +71,6 @@ youToDoApp.controller('projectsController', ['$scope', '$http', '$injector', 'pr
     };
 
     $scope.deleteProject = function (id) {
-        //deleteProject(projectsService, id);
         projectsService.deleteProject(id).success(function () {
             getProjects();
         });

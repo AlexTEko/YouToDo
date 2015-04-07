@@ -36,7 +36,7 @@
 </div>
 
 <modal title="Create new project" visible="showModal">
-    <form role="form">
+    <form name="newproject" role="form" novalidate>
         <div class="form-group">
             <label for="projectName">Project Name</label>
             <input type="text" class="form-control" id="projectName" placeholder="Enter new project name" ng-model="formData.Name" required />
@@ -49,6 +49,7 @@
             <label for="password">Description</label>
             <input type="text" class="form-control" id="projectDescription" placeholder="Description" ng-model="formData.Description" required />
         </div>
-        <button type="submit" class="btn btn-default" ng-click="createProject()">Create</button>
+        <button type="submit" class="btn btn-default" ng-click="newproject.$valid && createProject()" ng-show="newproject.$valid">Create</button>
+        
     </form>
 </modal>
