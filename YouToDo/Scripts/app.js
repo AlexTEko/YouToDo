@@ -1,9 +1,9 @@
 'use strict';
 
-var youToDoApp = angular.module('YouToDoApp', ['ui.router', 'LocalStorageModule']);
+var youToDoApp = angular.module('YouToDoApp', ['ui.router', 'LocalStorageModule', 'angular-loading-bar']);
 
 youToDoApp.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/mytasks');
     $stateProvider
         .state('mytasks', {
             url: '/mytasks',
