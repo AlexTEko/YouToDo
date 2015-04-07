@@ -15,7 +15,7 @@
                     <td>{{$index + 1}}</td>
                     <td class="text-uppercase">{{project.Name}}</td>
                     <td>{{project.Description}}</td>
-                    <td><button class="btn btn-danger">Delete</button></td>
+                    <td><button class="btn btn-danger" ng-click="deleteProject(project.Id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -27,10 +27,28 @@
             <fieldset>
                 <div class="form-group">
                     <div class="col-md-1 controls text-center">
-                        <button id="addButton" class="btn btn-primary" type="submit" data-ng-click="addProject()">Add project</button>
+                        <button id="addButton" class="btn btn-primary" type="submit" ng-click="addProject()">New project</button>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
+
+<modal title="Create new project" visible="showModal">
+    <form role="form">
+        <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input type="text" class="form-control" id="projectName" placeholder="Enter new project name" ng-model="formData.Name" required />
+        </div>
+        <div class="form-group">
+            <label for="projectLeader">Project Leader</label>
+            <input type="text" class="form-control" id="projectLeader" placeholder="Enter project leader" ng-model="formData.ProjectLeader" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Description</label>
+            <input type="text" class="form-control" id="projectDescription" placeholder="Description" ng-model="formData.Description" required />
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="createProject()">Create</button>
+    </form>
+</modal>

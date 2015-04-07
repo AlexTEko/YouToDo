@@ -10,7 +10,25 @@ youToDoApp.factory('projectsService', ['$http', 'ngAuthSettings', function ($htt
         });       
     };
 
+    var _createProject = function (formData) {
+        return $http({
+            method: 'POST',
+            url: 'api/projects',
+            data: formData,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    };
+
+    var _deleteProject = function (id) {
+        return $http({
+            method: 'DELETE',
+            url: 'api/projects/' + id
+        })
+    };
+
     projectsServiceFactory.getProjects = _getProjects;
+    projectsServiceFactory.createProject = _createProject;
+    projectsServiceFactory.deleteProject = _deleteProject;
 
     return projectsServiceFactory;
 
