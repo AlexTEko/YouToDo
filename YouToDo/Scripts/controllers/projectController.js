@@ -2,6 +2,7 @@
 youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateParams', function ($scope, projectService, $stateParams) {
     $scope.project = {};
     $scope.showModalEdit = false;
+    $scope.showModalTask = false;
     $scope.formData = {};
 
     var viewProject = function ($stateParams) {
@@ -22,6 +23,15 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
         });
     };
 
+    var getUsers = function () {
+        projectService.getUsers().then(function (result) {
+            $scope.users = result.data;
+            $scope.showModalTask = !$scope.showModalTask;
+        }, function (error) {
+            alert(error.data.message);
+        });
+    };
+
     viewProject($stateParams);
 
     $scope.editProject = function () {
@@ -31,5 +41,10 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
 
     $scope.saveProject = function () {
         saveProject(projectService);
+    };
+
+    $scope.addTask = function () {
+        $scope.formData = {};
+        getUsers(projectService);
     };
 }]);

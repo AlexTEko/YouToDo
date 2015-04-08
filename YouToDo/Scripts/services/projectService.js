@@ -21,8 +21,16 @@ youToDoApp.factory('projectService', ['$http', 'ngAuthSettings', 'authService', 
         })
     };
 
+    var _getUsers = function () {
+        return $http.get('api/account/list').then(function (results) {
+            return results;
+        });
+    };
+
+    
     projectServiceFactory.getProject = _getProject;
     projectServiceFactory.saveProject = _saveProject;
+    projectServiceFactory.getUsers = _getUsers;
 
     return projectServiceFactory;
 
