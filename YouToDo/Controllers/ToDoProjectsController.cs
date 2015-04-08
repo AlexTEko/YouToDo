@@ -69,6 +69,7 @@ namespace YouToDo.Controllers
                 return BadRequest();
             }
 
+
             if (!User.Identity.Name.Equals(toDoProject.ProjectLeader))
                 return BadRequest("You are not project leader of this project");
 

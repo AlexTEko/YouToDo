@@ -11,11 +11,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="project in projects">
+                <tr ng-repeat="project in projects" >
                     <td>{{$index + 1}}</td>
                     <td class="text-uppercase">{{project.Name}}</td>
                     <td>{{project.Description}}</td>
-                    <td><button class="btn btn-danger" ng-click="deleteProject(project.Id)">Delete</button></td>
+                    <td><button class="btn btn-danger" ng-click="deleteProject(project.Id)">Delete</button>
+                        <button class="btn btn-info" ng-click="viewProject(project.Id)">Info</button></td>
                 </tr>
             </tbody>
         </table>
@@ -35,7 +36,7 @@
     </div>
 </div>
 
-<modal title="Create new project" visible="showModal">
+<modal title="Create new project" visible="showModalCreate">
     <form name="newproject" role="form" novalidate>
         <div class="form-group">
             <label for="projectName">Project Name</label>
