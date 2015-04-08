@@ -187,6 +187,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\date.min.css" />
     <Content Include="Css\loading-bar.min.css" />
     <Content Include="Scripts\angular-local-storage.min.js" />
     <Content Include="Scripts\app.js" />
@@ -205,6 +206,7 @@
     <None Include="Properties\PublishProfiles\2012 SERVER.pubxml" />
     <None Include="Properties\PublishProfiles\youtodo.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\date.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

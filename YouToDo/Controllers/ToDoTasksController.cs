@@ -95,6 +95,8 @@ namespace YouToDo.Controllers
 
             toDoTask.TaskStatus = "Assigned";
 
+            toDoTask.TaskDateStart = DateTime.Now;
+
             db.ToDoTasks.Add(toDoTask);
             db.SaveChanges();
 

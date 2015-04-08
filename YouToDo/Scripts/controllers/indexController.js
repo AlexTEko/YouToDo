@@ -7,8 +7,5 @@ youToDoApp.controller('indexController', ['$scope', '$injector', 'authService', 
     }
 
     $scope.authentication = authService.authentication;
-    $scope.countTasks = function () {
-        //return tasksService.getTasks().length;
-    };
 
 }]);

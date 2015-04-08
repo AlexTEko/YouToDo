@@ -4,6 +4,7 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
     $scope.showModalEdit = false;
     $scope.showModalTask = false;
     $scope.formData = {};
+    $scope.formTask = {};
 
     var viewProject = function ($stateParams) {
         var id = $stateParams.id;
@@ -23,6 +24,15 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
         });
     };
 
+    var saveTask = function () {
+        projectService.saveTask($scope.formTask, $scope.project.Id).success(function () {
+            $scope.showModalTask = !$scope.showModalTask;
+            viewProject($stateParams);
+        }, function (error) {
+            alert(error.data.message);
+        });
+    };
+
     var getUsers = function () {
         projectService.getUsers().then(function (result) {
             $scope.users = result.data;
@@ -30,6 +40,10 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
         }, function (error) {
             alert(error.data.message);
         });
+    };
+
+    var cancelTask = function () {
+
     };
 
     viewProject($stateParams);
@@ -44,7 +58,19 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
     };
 
     $scope.addTask = function () {
-        $scope.formData = {};
+        $scope.formTask = {};
         getUsers(projectService);
+    };
+
+    $scope.saveTask = function () {
+        saveTask(projectService);
+    };
+
+    $scope.cancelTask = function (id) {
+        projectService.cancelTask(id).then(function (result) {
+            viewProject($stateParams);
+        }, function (error) {
+            alert(error.data.message);
+        });
     };
 }]);

@@ -38,7 +38,7 @@ namespace YouToDo.Controllers
             {
                 return NotFound();
             }
-            if (!User.Identity.Name.Equals(toDoProject.ProjectLeader))
+            if ((!User.Identity.Name.Equals(toDoProject.ProjectLeader)) && (!User.IsInRole("Admin")))
                 return BadRequest("You are not project leader of this project");
 
             ToDoProjectView toDoProjectView = new ToDoProjectView();
@@ -128,6 +128,13 @@ namespace YouToDo.Controllers
             if ((!User.Identity.Name.Equals(toDoProject.ProjectLeader)) && (!User.IsInRole("Admin")))
                 return BadRequest("You are not project leader of this project");
 
+            List<ToDoTask> array = db.ToDoTasks.Where(x => x.Project.Equals(toDoProject.Id)).ToList<ToDoTask>();
+            ToDoTask toDoTask;
+            foreach (ToDoTask element in array)
+            {
+                toDoTask = db.ToDoTasks.Find(element.Id);
+                db.ToDoTasks.Remove(toDoTask);
+            }
             db.ToDoProjects.Remove(toDoProject);
             db.SaveChanges();
 
