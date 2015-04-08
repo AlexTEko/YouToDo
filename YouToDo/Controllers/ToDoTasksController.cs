@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 using System.Web.Http.Description;
 using YouToDo.Models;
@@ -16,6 +17,16 @@ namespace YouToDo.Controllers
     public class ToDoTasksController : ApiController
     {
         private YouToDoContext db = new YouToDoContext();
+
+        public void SendMail(string to, string subject, string body)
+        {
+            MailMessage msgeme = new MailMessage("robot@tekoone.ru", to, subject, body);
+            SmtpClient smtpclient = new SmtpClient("smtp.yandex.ru", 25);
+            smtpclient.EnableSsl = true;
+            smtpclient.Credentials = new NetworkCredential("robot@tekoone.ru", "123robot456");
+            smtpclient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpclient.Send(msgeme);
+        }
 
         // GET: api/ToDoTasks
         [Route("api/tasks")]
@@ -76,7 +87,7 @@ namespace YouToDo.Controllers
                     throw;
                 }
             }
-
+            
             return CreatedAtRoute("DefaultApi", new { controller = "tasks", id = toDoTask.Id }, toDoTask);
         }
 
@@ -99,7 +110,7 @@ namespace YouToDo.Controllers
 
             db.ToDoTasks.Add(toDoTask);
             db.SaveChanges();
-
+            SendMail(toDoTask.AssignedTo, "New Task is assigned to you", "Task: " + toDoTask.TaskText + "\nOpen: http://youtodo.azurewebsites.net/#/mytasks");
             return CreatedAtRoute("DefaultApi", new { controller = "tasks", id = toDoTask.Id }, toDoTask);
         }
 

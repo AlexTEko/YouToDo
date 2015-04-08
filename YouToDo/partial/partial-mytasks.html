@@ -6,6 +6,8 @@
             <tr>
                 <th>#</th>
                 <th>Task</th>
+                <th>Description</th>
+                <th>Deadline</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -13,6 +15,8 @@
             <tr ng-repeat="task in tasks">
                 <td>{{$index + 1}}</td>
                 <td class="text-uppercase">{{task.TaskText}}</td>
+                <td>{{task.TaskDescription}}</td>
+                <td>{{task.TaskDateDeadline}}</td>
                 <td><button class="btn btn-info">Start</button><button class="btn btn-danger">Decline</button></td>
             </tr>
             </tbody>

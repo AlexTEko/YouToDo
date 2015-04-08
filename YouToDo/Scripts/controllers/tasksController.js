@@ -11,5 +11,5 @@ youToDoApp.controller('tasksController', ['$scope', 'tasksService', function ($s
     }
 
     $scope.getTasks();
-    setInterval($scope.getTasks, 5000);
+    //setInterval($scope.getTasks, 5000);
 }]);
