@@ -40,7 +40,18 @@ namespace YouToDo.Controllers
             }
             if (!User.Identity.Name.Equals(toDoProject.ProjectLeader))
                 return BadRequest("You are not project leader of this project");
-            return Ok(toDoProject);
+
+            ToDoProjectView toDoProjectView = new ToDoProjectView();
+
+            toDoProjectView.Id = toDoProject.Id;
+            toDoProjectView.Name = toDoProject.Name;
+            toDoProjectView.ProjectLeader = toDoProject.ProjectLeader;
+            toDoProjectView.Description = toDoProject.Description;
+
+            IQueryable<ToDoTask> toDoTasks = db.ToDoTasks.Where(x => x.Project.Equals(toDoProject.Id));
+            toDoProjectView.Tasks = toDoTasks.ToList<ToDoTask>();
+
+            return Ok(toDoProjectView);
         }
 
         // PUT: api/ToDoProjects/5
