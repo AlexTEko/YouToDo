@@ -1,0 +1,45 @@
+﻿<div class="jumbotron">
+    <h1>{{project.Name}} <button class="btn btn-info btn-xs" ng-click="editProject()">Edit</button></h1>
+    <p>{{project.Description}}</p>
+    <div class="row">
+        <p>Tasks:</p>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Performer</th>
+                    <th>Task Status</th>
+                    <th>Task Start</th>
+                    <th>Task Deadline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in project.Tasks">
+                    <td>{{$index + 1}}</td>
+                    <td class="text-uppercase">{{task.TaskText}}</td>
+                    <td>{{task.AssignedTo}}</td>
+                    <td>{{task.TaskStatus}}</td>
+                    <td>{{task.TaskDateStart}}</td>
+                    <td>{{task.TaskDateDeadline}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<modal title="Edit project" visible="showModalEdit">
+    <form name="editproject" role="form" novalidate>
+        <div class="form-group">
+            <label for="projectName">Project Name</label>
+            <input type="text" class="form-control" id="projectName" placeholder="Enter new project name" ng-model="formData.Name" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Description</label>
+            <input type="text" class="form-control" id="projectDescription" placeholder="Description" ng-model="formData.Description" required />
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="editproject.$valid && saveProject()" ng-show="editproject.$valid">Save</button>
+    </form>
+</modal>
