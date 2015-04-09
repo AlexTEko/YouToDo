@@ -6,7 +6,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th class ="hidden-xs">Description</thclass>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -14,7 +14,7 @@
                 <tr ng-repeat="project in projects" >
                     <td>{{$index + 1}}</td>
                     <td class="text-uppercase">{{project.Name}}</td>
-                    <td>{{project.Description}}</td>
+                    <td class="hidden-xs">{{project.Description}}</td>
                     <td>
                         <button class="btn btn-info" ng-click="viewProject(project.Id)">Open</button>
                         <button class="btn btn-danger" ng-click="deleteProject(project.Id)">Delete</button>                        

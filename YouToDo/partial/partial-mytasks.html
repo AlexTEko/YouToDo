@@ -12,17 +12,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="task in tasks">
-                <td>{{$index + 1}}</td>
-                <td class="text-uppercase">{{task.TaskText}}</td>
-                <td class="hidden-xs">{{task.TaskDescription}}</td>
-                <td class="hidden-xs">{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}}</td>
-                <td>
-                    <button class="btn btn-default" ng-click="openTask($index)">Open</button>
-                    <button class="btn btn-info" ng-show={{isAssigned($index)}} ng-click="startTask(task)">Start</button>
-                    <button class="btn btn-success" ng-show={{isStart($index)}} ng-click="doneTask(task)">Done</button>
-                </td>
-            </tr>
+                <tr ng-repeat="task in tasks" ng-class="{info: isStart($index)}">
+                    <td>{{$index + 1}}</td>
+                    <td class="text-uppercase">{{task.TaskText}}</td>
+                    <td class="hidden-xs">{{task.TaskDescription}}</td>
+                    <td class="hidden-xs">{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>
+                        <button class="btn btn-default" ng-click="openTask($index)">Open</button>
+                        <button class="btn btn-info" ng-show={{isAssigned($index)}} ng-click="startTask(task)">Start</button>
+                        <button class="btn btn-success" ng-show={{isStart($index)}} ng-click="doneTask(task)">Done</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -30,6 +30,8 @@
 
 <modal title="Task" visible="showModalTask">
     <h1>{{task.TaskText}}</h1>
+    <p>Deadline: {{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}} {{ task.TaskPriority}} priority</p>
     <h3>{{task.TaskDescription}}</h3>
     <p>{{task.TaskComment}}</p>
+
 </modal>

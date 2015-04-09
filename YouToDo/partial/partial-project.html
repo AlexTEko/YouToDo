@@ -10,9 +10,9 @@
                 <tr>
                     <th>#</th>
                     <th>Task</th>
-                    <th>Performer</th>
-                    <th>Task Status</th>
-                    <th>Task Deadline</th>
+                    <th class ="hidden-xs">Performer</thclass>
+                    <th>Task Status</thclass>
+                    <th class="hidden-xs">Task Deadline</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,9 +20,9 @@
                 <tr ng-repeat="task in project.Tasks">
                     <td>{{$index + 1}}</td>
                     <td class="text-uppercase">{{task.TaskText}}</td>
-                    <td>{{task.AssignedTo}}</td>
+                    <td class="hidden-xs">{{task.AssignedTo}}</td>
                     <td>{{task.TaskStatus}}</td>
-                    <td>{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td class="hidden-xs">{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm' }}</td>
                     <td>
                         <button class="btn btn-info btn-xs" ng-click="editTask(task.Id)">Edit</button>
                         <button class="btn btn-danger btn-xs" ng-click="cancelTask(task.Id)">Cancel</button>
@@ -90,9 +90,9 @@
             <input type="text" class="form-control" id="Name" placeholder="Name" ng-model="formTask.TaskText" required />
             <label for="Priority">Task Priority</label>
             <select class="form-control" id="Priority" ng-model="formTask.TaskPriority">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option>high</option>
+                <option>middle</option>
+                <option>low</option>
             </select>
             <label for="Description">Task Description</label>
             <input type="text" class="form-control" id="Description" placeholder="Description" ng-model="formTask.TaskDescription" />
