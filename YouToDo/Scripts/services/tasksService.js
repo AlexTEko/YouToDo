@@ -15,8 +15,30 @@ youToDoApp.factory('tasksService', ['$http', 'ngAuthSettings', function ($http, 
         });
     };
 
+    var _startTask = function (task) {
+        task.TaskStatus = "start";
+        return $http({
+            method: 'PUT',
+            url: 'api/tasks/' + task.Id,
+            data: task,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    };
+
+    var _doneTask = function (task) {
+        task.TaskStatus = "done";
+        return $http({
+            method: 'PUT',
+            url: 'api/tasks/' + task.Id,
+            data: task,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    };
+
     tasksServiceFactory.getTasks = _getTasks;
     tasksServiceFactory.getTask = _getTask;
+    tasksServiceFactory.startTask = _startTask;
+    tasksServiceFactory.doneTask = _doneTask;
 
     return tasksServiceFactory;
 

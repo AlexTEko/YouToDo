@@ -13,7 +13,7 @@ namespace YouToDo.Models
 
         public string AssignedTo { get; set; }
 
-        public int TaskPriority { get; set; }
+        public string TaskPriority { get; set; }
 
         public string TaskText { get; set; }
 

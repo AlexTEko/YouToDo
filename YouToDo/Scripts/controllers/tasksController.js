@@ -28,6 +28,22 @@ youToDoApp.controller('tasksController', ['$scope', 'tasksService', function ($s
         $scope.showModalTask = !$scope.showModalTask;
     }
 
+    $scope.startTask = function (task) {
+        tasksService.startTask(task).then(function (results) {
+            $scope.getTasks();
+        }, function (error) {
+            //alert(error.data.message);
+        });
+    }
+
+    $scope.doneTask = function (task) {
+        tasksService.doneTask(task).then(function (results) {
+            $scope.getTasks();
+        }, function (error) {
+            //alert(error.data.message);
+        });
+    }
+
     $scope.getTasks();
     //setInterval($scope.getTasks, 5000);
 }]);

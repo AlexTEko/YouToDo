@@ -16,12 +16,11 @@
                 <td>{{$index + 1}}</td>
                 <td class="text-uppercase">{{task.TaskText}}</td>
                 <!--<td>{{task.TaskDescription}}</td>-->
-                <td>{{task.TaskDateDeadline | date}}</td>
+                <td>{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}}</td>
                 <td>
                     <button class="btn btn-default" ng-click="openTask($index)">Open</button>
-                    <button class="btn btn-info" ng-show={{isAssigned($index)}}>Start</button>
-                    <button class="btn btn-success" ng-show={{isStart($index)}}>Done</button>
-                    <button class="btn btn-danger" >Decline</button>
+                    <button class="btn btn-info" ng-show={{isAssigned($index)}} ng-click="startTask(task)">Start</button>
+                    <button class="btn btn-success" ng-show={{isStart($index)}} ng-click="doneTask(task)">Done</button>
                 </td>
             </tr>
             </tbody>
