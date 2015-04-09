@@ -46,7 +46,7 @@ namespace YouToDo.Controllers
                 return NotFound();
             }
 
-            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
+            if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")) && (!toDoTask.AssignedTo.Equals(RequestContext.Principal.Identity.Name)))
                 return BadRequest("You are not authorized");
 
             return Ok(toDoTask);

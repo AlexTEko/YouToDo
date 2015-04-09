@@ -44,12 +44,22 @@ youToDoApp.factory('projectService', ['$http', 'ngAuthSettings', 'authService', 
         })
     };
 
+    var _saveEditTask = function (formTask, id) {
+        formTask.Id = id;
+        return $http({
+            method: 'PUT',
+            url: 'api/tasks/' + id,
+            data: formTask,
+            headers: { 'Content-Type': 'application/json' }
+        })
+    };
     
     projectServiceFactory.getProject = _getProject;
     projectServiceFactory.saveProject = _saveProject;
     projectServiceFactory.saveTask = _saveTask;
     projectServiceFactory.getUsers = _getUsers;
     projectServiceFactory.cancelTask = _cancelTask;
+    projectServiceFactory.saveEditTask = _saveEditTask;
 
     return projectServiceFactory;
 

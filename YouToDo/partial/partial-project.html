@@ -24,6 +24,7 @@
                     <td>{{task.TaskStatus}}</td>
                     <td>{{task.TaskDateDeadline}}</td>
                     <td>
+                        <button class="btn btn-info btn-xs" ng-click="editTask(task.Id)">Edit</button>
                         <button class="btn btn-danger btn-xs" ng-click="cancelTask(task.Id)">Cancel</button>
                     </td>
                 </tr>
@@ -51,7 +52,7 @@
 
 <modal title="Add task" visible="showModalTask">
     <form name="addtask" role="form" novalidate>
-        <h1>{{project.Name}}</h1>
+        <h1>Project: {{project.Name}}</h1>
         <div class="form-group">
             <label for="Perfomer">Perfomer</label>
             <select class="form-control" id="Perfomer" ng-model="formTask.AssignedTo" required>
@@ -73,5 +74,33 @@
             <input type="datetime" date-time ng-model="formTask.TaskDateDeadline" id="Deadline" required>
             </div>
         <button type="submit" class="btn btn-default" ng-click="addtask.$valid && saveTask()" ng-show="addtask.$valid">Add Task</button>
+    </form>
+</modal>
+
+
+<modal title="Edit task" visible="showModalTaskEdit">
+    <form name="edittask" role="form" novalidate>
+        <h1>Project: {{project.Name}}</h1>
+        <div class="form-group">
+            <label for="Perfomer">Perfomer</label>
+            <select class="form-control" id="Perfomer" ng-model="formTask.AssignedTo" required>
+                <option ng-repeat="user in users">{{user}}</option>
+            </select>
+            <label for="Name">Task Name</label>
+            <input type="text" class="form-control" id="Name" placeholder="Name" ng-model="formTask.TaskText" required />
+            <label for="Priority">Task Priority</label>
+            <select class="form-control" id="Priority" ng-model="formTask.TaskPriority">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+            <label for="Description">Task Description</label>
+            <input type="text" class="form-control" id="Description" placeholder="Description" ng-model="formTask.TaskDescription" />
+            <label for="Comment">Comment</label>
+            <input type="text" class="form-control" id="Comment" placeholder="Comment" ng-model="formTask.TaskComment" />
+            <label for="Deadline">Deadline Time</label><br>
+            <input type="datetime" date-time ng-model="formTask.TaskDateDeadline" id="Deadline" required>
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="edittask.$valid && saveEditTask()" ng-show="edittask.$valid">Edit Task</button>
     </form>
 </modal>

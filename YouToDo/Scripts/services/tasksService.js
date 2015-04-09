@@ -9,7 +9,14 @@ youToDoApp.factory('tasksService', ['$http', 'ngAuthSettings', function ($http, 
         });
     };
 
+    var _getTask = function (id) {
+        return $http.get('api/tasks/'+id).then(function (results) {
+            return results;
+        });
+    };
+
     tasksServiceFactory.getTasks = _getTasks;
+    tasksServiceFactory.getTask = _getTask;
 
     return tasksServiceFactory;
 

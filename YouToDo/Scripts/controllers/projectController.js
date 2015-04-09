@@ -1,10 +1,13 @@
 ﻿'use strict';
-youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateParams', function ($scope, projectService, $stateParams) {
+youToDoApp.controller('projectController', ['$scope', 'projectService', 'tasksService', '$stateParams', function ($scope, projectService, tasksService, $stateParams) {
     $scope.project = {};
     $scope.showModalEdit = false;
     $scope.showModalTask = false;
+    $scope.showModalTaskEdit = false;
     $scope.formData = {};
     $scope.formTask = {};
+    
+
 
     var viewProject = function ($stateParams) {
         var id = $stateParams.id;
@@ -36,7 +39,7 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
     var getUsers = function () {
         projectService.getUsers().then(function (result) {
             $scope.users = result.data;
-            $scope.showModalTask = !$scope.showModalTask;
+            
         }, function (error) {
             alert(error.data.message);
         });
@@ -60,6 +63,7 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
     $scope.addTask = function () {
         $scope.formTask = {};
         getUsers(projectService);
+        $scope.showModalTask = !$scope.showModalTask;
     };
 
     $scope.saveTask = function () {
@@ -69,6 +73,25 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', '$stateP
     $scope.cancelTask = function (id) {
         projectService.cancelTask(id).then(function (result) {
             viewProject($stateParams);
+        }, function (error) {
+            alert(error.data.message);
+        });
+    };
+
+    $scope.editTask = function (id) {
+        tasksService.getTask(id).then(function (result) {
+            getUsers(projectService);
+            $scope.formTask = result.data;
+            $scope.showModalTaskEdit = !$scope.showModalTaskEdit;
+        }, function (error) {
+            alert(error.data.message);
+        });
+    }
+
+    $scope.saveEditTask = function () {
+        projectService.saveEditTask($scope.formTask, $scope.formTask.Id).then(function (result) {
+            viewProject($stateParams);
+            $scope.showModalTaskEdit = !$scope.showModalTaskEdit;
         }, function (error) {
             alert(error.data.message);
         });
