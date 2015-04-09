@@ -16,10 +16,21 @@
                 <td>{{$index + 1}}</td>
                 <td class="text-uppercase">{{task.TaskText}}</td>
                 <td>{{task.TaskDescription}}</td>
-                <td>{{task.TaskDateDeadline}}</td>
-                <td><button class="btn btn-info">Start</button><button class="btn btn-danger">Decline</button></td>
+                <td>{{task.TaskDateDeadline | date}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="openTask($index)">Open</button>
+                    <button class="btn btn-info" ng-show={{isAssigned($index)}}>Start</button>
+                    <button class="btn btn-success" ng-show={{isStart($index)}}>Done</button>
+                    <button class="btn btn-danger" >Decline</button>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+
+<modal title="Task" visible="showModalTask">
+    <h1>{{task.TaskText}}</h1>
+    <h3>{{task.TaskDescription}}</h3>
+    <p>{{task.TaskComment}}</p>
+</modal>

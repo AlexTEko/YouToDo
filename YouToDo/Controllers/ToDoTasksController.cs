@@ -32,7 +32,7 @@ namespace YouToDo.Controllers
         [Route("api/tasks")]
         public IQueryable<ToDoTask> GetToDoTasks()
         {
-            return db.ToDoTasks.Where(x =>x.AssignedTo.Equals(RequestContext.Principal.Identity.Name));
+            return db.ToDoTasks.Where(x =>x.AssignedTo.Equals(RequestContext.Principal.Identity.Name) && !x.TaskStatus.Equals("done"));
         }
 
         // GET: api/ToDoTasks/5
@@ -104,7 +104,7 @@ namespace YouToDo.Controllers
             if ((!User.IsInRole("Manager")) && (!User.IsInRole("Admin")))
                 return BadRequest("You are not authorized");
 
-            toDoTask.TaskStatus = "Assigned";
+            toDoTask.TaskStatus = "assigned";
 
             toDoTask.TaskDateStart = DateTime.Now;
 
