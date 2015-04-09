@@ -6,8 +6,8 @@
             <tr>
                 <th>#</th>
                 <th>Task</th>
-                <!--<th>Description</th>-->
-                <th>Deadline</th>
+                <th class="hidden-xs">Description</th>
+                <th class="hidden-xs">Deadline</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -15,8 +15,8 @@
             <tr ng-repeat="task in tasks">
                 <td>{{$index + 1}}</td>
                 <td class="text-uppercase">{{task.TaskText}}</td>
-                <!--<td>{{task.TaskDescription}}</td>-->
-                <td>{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}}</td>
+                <td class="hidden-xs">{{task.TaskDescription}}</td>
+                <td class="hidden-xs">{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}}</td>
                 <td>
                     <button class="btn btn-default" ng-click="openTask($index)">Open</button>
                     <button class="btn btn-info" ng-show={{isAssigned($index)}} ng-click="startTask(task)">Start</button>
