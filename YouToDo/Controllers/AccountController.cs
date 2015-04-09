@@ -109,6 +109,18 @@ namespace YouToDo.Controllers
             return Ok(userManager.IsInRole(user.Id, "Manager"));
         }
 
+        [Route("getrole")]
+        public string GetRole()
+        {
+            if (User.IsInRole("Admin"))
+                return "Admin";
+            if (User.IsInRole("Manager"))
+                return "Manager";
+     
+            return "User";
+        }
+
+
         [Route("removemanager")]
         public IHttpActionResult RemoveManager(string name)
         {

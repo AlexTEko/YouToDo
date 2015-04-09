@@ -19,7 +19,7 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a ng-show="authentication.isAuth" ui-sref="projects">My Projects </a></li>
+                    <li><a ng-show="authentication.isAuth && !isUser()" ui-sref="projects">My Projects </a></li>
                     <li><a ng-show="authentication.isAuth" ui-sref="mytasks">My Tasks <span class="badge">{{countTasks()}}</span></a></li>
                     <li class="dropdown" ng-hide="!authentication.isAuth">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button"

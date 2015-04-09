@@ -8,4 +8,10 @@ youToDoApp.controller('indexController', ['$scope', '$injector', 'authService', 
 
     $scope.authentication = authService.authentication;
 
+    $scope.isUser = function () {
+        //console.log($scope.authentication.role);
+        if ($scope.authentication.role == "User")
+            return true;
+        return false;
+    }
 }]);
