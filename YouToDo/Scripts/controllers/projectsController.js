@@ -30,9 +30,11 @@ youToDoApp.controller('projectsController', ['$scope', '$http', '$injector', 'pr
     };
 
     $scope.deleteProject = function (id) {
-        projectsService.deleteProject(id).success(function () {
-            getProjects();
-        });
+        if (confirm("Are you sure want to delete project?") == true) {
+            projectsService.deleteProject(id).success(function () {
+                getProjects();
+            });
+        }
     };
 
     $scope.addProject = function () {

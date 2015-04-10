@@ -71,11 +71,14 @@ youToDoApp.controller('projectController', ['$scope', 'projectService', 'tasksSe
     };
 
     $scope.cancelTask = function (id) {
-        projectService.cancelTask(id).then(function (result) {
-            viewProject($stateParams);
-        }, function (error) {
-            alert(error.data.message);
-        });
+        if (confirm("Are you sure want to cancel this task?") == true) {
+            projectService.cancelTask(id).then(function (result) {
+                viewProject($stateParams);
+            }, function (error) {
+                alert(error.data.message);
+            });
+        }
+
     };
 
     $scope.editTask = function (id) {
