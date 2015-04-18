@@ -22,7 +22,13 @@ youToDoApp.factory('projectService', ['$http', 'ngAuthSettings', 'authService', 
     };
 
     var _getUsers = function () {
-        return $http.get('api/account/list').then(function (results) {
+        return $http.get('api/account/userslist').then(function (results) {
+            return results;
+        });
+    };
+
+    var _getManagers = function () {
+        return $http.get('api/account/managerslist').then(function (results) {
             return results;
         });
     };
@@ -60,6 +66,7 @@ youToDoApp.factory('projectService', ['$http', 'ngAuthSettings', 'authService', 
     projectServiceFactory.getUsers = _getUsers;
     projectServiceFactory.cancelTask = _cancelTask;
     projectServiceFactory.saveEditTask = _saveEditTask;
+    projectServiceFactory.getManagers = _getManagers;
 
     return projectServiceFactory;
 

@@ -189,8 +189,10 @@
   <ItemGroup>
     <Content Include="Css\date.min.css" />
     <Content Include="Css\loading-bar.min.css" />
+    <Content Include="partial\partial-admin.html" />
     <Content Include="Scripts\angular-local-storage.min.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\controllers\adminController.js" />
     <Content Include="Scripts\controllers\indexController.js" />
     <Content Include="Scripts\controllers\loginController.js" />
     <Content Include="Scripts\controllers\projectController.js" />
@@ -218,6 +220,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\services\adminService.js" />
     <Content Include="Scripts\services\authInterceptorService.js" />
     <Content Include="Scripts\services\authService.js" />
     <Content Include="Scripts\services\projectService.js" />

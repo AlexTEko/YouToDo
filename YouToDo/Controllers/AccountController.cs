@@ -115,8 +115,7 @@ namespace YouToDo.Controllers
             if (User.IsInRole("Admin"))
                 return "Admin";
             if (User.IsInRole("Manager"))
-                return "Manager";
-     
+                return "Manager";  
             return "User";
         }
 
@@ -151,19 +150,31 @@ namespace YouToDo.Controllers
             return Ok(!userManager.IsInRole(user.Id, "Manager"));
         }
 
-        // GET api/Account/list
-        [Route("list")]
-        public List<string> GetList()
+        // GET api/Account/userslist
+        [Route("userslist")]
+        public List<string> GetUsersList()
         {
-            var userManager = HttpContext.Current
-                .GetOwinContext().GetUserManager<ApplicationUserManager>();
-            // I don't know what I am doing here
-            ApplicationDbContext UsersContext = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
+            var users = context.Users.Where(x => x.Roles.Count == 0).ToList();
             List<string> list = new List<string>();
-            List<ApplicationUser> applicationusers = UsersContext.Users.ToList();
-            foreach (ApplicationUser applicationuser in applicationusers)
-                if ((!userManager.IsInRole(applicationuser.Id, "Admin")) && (!userManager.IsInRole(applicationuser.Id, "Manager")))
-                    list.Add(applicationuser.Email);
+            foreach (ApplicationUser user in users)
+                list.Add(user.UserName);
+           // var users = context.Users.ToList();
+            return list;
+        }
+
+        // GET api/Account/managerslist
+        [Route("managerslist")]
+        public List<string> GetManagersList()
+        {
+            var roleManager = HttpContext.Current
+                .GetOwinContext().Get<ApplicationRoleManager>();
+            var RoleId = roleManager.FindByName("Manager").Id;
+            var context = new ApplicationDbContext();
+            var users = context.Users.Where(x => x.Roles.Select(z => z.RoleId).Contains(RoleId)).ToList();
+            List<string> list = new List<string>();
+            foreach (ApplicationUser user in users)
+                list.Add(user.UserName);
             return list;
         }
 

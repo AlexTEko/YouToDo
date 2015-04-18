@@ -32,8 +32,6 @@ youToDoApp.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuth
 
         var deferred = $q.defer();
 
-
-
         $http.post('token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {    
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
