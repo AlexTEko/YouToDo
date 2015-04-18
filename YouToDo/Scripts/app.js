@@ -3,7 +3,7 @@
 var youToDoApp = angular.module('YouToDoApp', ['ui.router', 'LocalStorageModule', 'angular-loading-bar', 'datePicker']);
 
 youToDoApp.config(function($stateProvider, $urlRouterProvider) {
-    //$urlRouterProvider.otherwise('/mytasks');
+    $urlRouterProvider.otherwise('/mytasks');
     $stateProvider
         .state('mytasks', {
             url: '/mytasks',

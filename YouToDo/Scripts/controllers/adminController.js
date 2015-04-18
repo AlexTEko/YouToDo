@@ -1,6 +1,10 @@
 ﻿'use strict';
 youToDoApp.controller('adminController', ['$scope', 'projectService', 'adminService', '$stateParams', function ($scope, projectService, adminService, $stateParams) {
 
+    $scope.parameters = [
+        { name: "Projects", value: "5" },
+        { name: "Tasks ", value: "15" }
+    ];
 
     var getUsers = function () {
         projectService.getUsers().then(function (result) {
