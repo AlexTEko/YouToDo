@@ -3,20 +3,18 @@ youToDoApp.factory('adminService', ['$http', 'ngAuthSettings', function ($http, 
 
     var adminServiceFactory = {};
 
-    var _addRole = function (formData) {
+    var _addRole = function (name) {
         return $http({
             method: 'POST',
-            url: 'api/Account/addmanager?name=' + formData.user,
-            data: formData,
+            url: 'api/Account/addmanager?name=' + name,
             headers: { 'Content-Type': 'application/json' }
         })
     };
 
-    var _delRole = function (formData) {
+    var _delRole = function (name) {
         return $http({
             method: 'POST',
-            url: 'api/Account/removemanager?name=' + formData.manager,
-            data: formData,
+            url: 'api/Account/removemanager?name=' + name,
             headers: { 'Content-Type': 'application/json' }
         })
     };

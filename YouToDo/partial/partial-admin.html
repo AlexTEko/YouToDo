@@ -11,28 +11,30 @@
 </div>
 <hr>-->
 <div class="row">
-    <div class="col-md-6">
-        <form name="addRoleForm" role="form" novalidate>
-            <h2>Add manager role</h2>
-            <div class="form-group">
-                <label for="Perfomer">Select User:</label>
-                <select class="form-control" id="Perfomer" ng-model="formData.user" required>
-                    <option ng-repeat="user in users">{{user}}</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-default" ng-click="addRoleForm.$valid && addRole()" ng-show="addRoleForm.$valid">Add Manager</button>
-        </form>
-    </div>
-    <div class="col-md-6">
-        <form name="delRoleForm" role="form" novalidate>
-            <h2>Remove manager role</h2>
-            <div class="form-group">
-                <label for="Perfomer">Select Manager:</label>
-                <select class="form-control" id="Perfomer" ng-model="formData.manager" required>
-                    <option ng-repeat="manager in managers">{{manager}}</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-default" ng-click="delRoleForm.$valid && delRole()" ng-show="delRoleForm.$valid">Remove Manager</button>
-        </form>
+    <div class="col-md-6 col-md-offset-1">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{$index + 1}}</td>
+                    <td>{{user}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm" ng-click="addRole(user)">+ Manager</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="manager in managers">
+                    <td>{{$index + 1}}</td>
+                    <td>{{manager}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" ng-click="delRole(manager)">- Manager</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

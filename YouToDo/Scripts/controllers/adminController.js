@@ -22,33 +22,25 @@ youToDoApp.controller('adminController', ['$scope', 'projectService', 'adminServ
         });
     };
 
-    var addRole = function () {
-        //console.log('test');
-        adminService.addRole($scope.formData).then(function (result) {
-            getUsers();
-            getManagers();
-        }, function (error) {
-            alert(error.data.message);
-        });
-    };
-
-    var delRole = function () {
-        adminService.delRole($scope.formData).then(function (result) {
-            getUsers();
-            getManagers();
-        }, function (error) {
-            alert(error.data.message);
-        });
-    };
-
     getUsers();
     getManagers();
 
-    $scope.addRole = function () {
-        addRole(adminService);
+    $scope.addRole = function (name) {
+        //console.log('test');
+        adminService.addRole(name).then(function (result) {
+            getUsers();
+            getManagers();
+        }, function (error) {
+            alert(error.data.message);
+        });
     }
 
-    $scope.delRole = function () {
-        delRole(adminService);
+    $scope.delRole = function (name) {
+        adminService.delRole(name).then(function (result) {
+            getUsers();
+            getManagers();
+        }, function (error) {
+            alert(error.data.message);
+        });
     }
 }]);
