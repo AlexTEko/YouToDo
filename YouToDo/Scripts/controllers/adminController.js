@@ -25,8 +25,8 @@ youToDoApp.controller('adminController', ['$scope', 'projectService', 'adminServ
     getUsers();
     getManagers();
 
-    $scope.addRole = function (name) {
-        //console.log('test');
+    $scope.addRole = function (name,id) {
+        $('#add'+id).button('loading')
         adminService.addRole(name).then(function (result) {
             getUsers();
             getManagers();
@@ -35,7 +35,8 @@ youToDoApp.controller('adminController', ['$scope', 'projectService', 'adminServ
         });
     }
 
-    $scope.delRole = function (name) {
+    $scope.delRole = function (name, id) {
+        $('#del' + id).button('loading')
         adminService.delRole(name).then(function (result) {
             getUsers();
             getManagers();
