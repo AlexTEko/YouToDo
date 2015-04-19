@@ -190,6 +190,7 @@
     <Content Include="Css\date.min.css" />
     <Content Include="Css\loading-bar.min.css" />
     <Content Include="partial\partial-admin.html" />
+    <Content Include="partial\partial-statistic.html" />
     <Content Include="Scripts\angular-local-storage.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\controllers\adminController.js" />
@@ -198,6 +199,7 @@
     <Content Include="Scripts\controllers\projectController.js" />
     <Content Include="Scripts\controllers\projectsController.js" />
     <Content Include="Scripts\controllers\signupController.js" />
+    <Content Include="Scripts\controllers\statisticController.js" />
     <Content Include="Scripts\controllers\tasksController.js" />
     <Content Include="Scripts\controllers\usersController.js" />
     <Content Include="Css\bootstrap.min.css" />
@@ -225,6 +227,7 @@
     <Content Include="Scripts\services\authService.js" />
     <Content Include="Scripts\services\projectService.js" />
     <Content Include="Scripts\services\projectsService.js" />
+    <Content Include="Scripts\services\statisticService.js" />
     <Content Include="Scripts\services\tasksService.js" />
     <Content Include="Scripts\services\usersService.js" />
     <Content Include="partial\partial-login.html" />

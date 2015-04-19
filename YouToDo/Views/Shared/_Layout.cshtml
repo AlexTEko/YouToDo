@@ -19,7 +19,8 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a ng-show="authentication.isAuth && isAdmin()" ui-sref="admin">Admin</a></li>
+                    <li><a ng-show="authentication.isAuth && isAdmin()" ui-sref="admin">Accounts</a></li>
+                    <li><a ng-show="authentication.isAuth && isAdmin()" ui-sref="statistic">Statistic</a></li>
                     <li><a ng-show="authentication.isAuth && !isUser()" ui-sref="projects">My Projects </a></li>
                     <li><a ng-show="authentication.isAuth" ui-sref="mytasks">My Tasks <span class="badge">{{countTasks()}}</span></a></li>
                     <li class="dropdown" ng-hide="!authentication.isAuth">
@@ -59,6 +60,7 @@
     <script src="Scripts/services/usersService.js" type="application/javascript"></script>
     <script src="Scripts/services/projectService.js" type="application/javascript"></script>
     <script src="Scripts/services/adminService.js" type="application/javascript"></script>
+    <script src="Scripts/services/statisticService.js" type="application/javascript"></script>
     <script src="Scripts/controllers/loginController.js" type="application/javascript"></script>
     <script src="Scripts/controllers/signupController.js" type="application/javascript"></script>
     <script src="Scripts/controllers/indexController.js" type="application/javascript"></script>
@@ -67,6 +69,7 @@
     <script src="Scripts/controllers/usersController.js" type="application/javascript"></script>
     <script src="Scripts/controllers/projectController.js" type="application/javascript"></script>
     <script src="Scripts/controllers/adminController.js" type="application/javascript"></script>
+    <script src="Scripts/controllers/statisticController.js" type="application/javascript"></script>
     <script src="Scripts/loading-bar.min.js" type="application/javascript"></script>
     <script src="Scripts/date.min.js" type="application/javascript"></script>
 </body>

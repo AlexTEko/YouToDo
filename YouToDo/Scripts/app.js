@@ -39,6 +39,11 @@ youToDoApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/admin',
             templateUrl: 'partial/partial-admin.html',
             controller: 'adminController'
+        })
+        .state('statistic', {
+            url: '/statistic',
+            templateUrl: 'partial/partial-statistic.html',
+            controller: 'statisticController'
         });
 });
 

@@ -18,6 +18,15 @@ namespace YouToDo.Controllers
     {
         private YouToDoContext db = new YouToDoContext();
 
+        public class Stat
+        {
+            public int Tasks;
+            public int TasksActive;
+            public int TasksClosed;
+            public int Projects;
+            public int ProjectsActive;
+        } 
+
         public void SendMail(string to, string subject, string body)
         {
             MailMessage msgeme = new MailMessage("robot@tekoone.ru", to, subject, body);
@@ -33,6 +42,19 @@ namespace YouToDo.Controllers
         public IQueryable<ToDoTask> GetToDoTasks()
         {
             return db.ToDoTasks.Where(x =>x.AssignedTo.Equals(RequestContext.Principal.Identity.Name) && !x.TaskStatus.Equals("done"));
+        }
+
+        // GET: api/statistic
+        [Route("api/statistic")]
+        public Stat GetStatistic()
+        {
+            Stat list = new Stat();
+            list.Tasks = db.ToDoTasks.Count();
+            list.TasksActive = db.ToDoTasks.Where(x => x.TaskStatus == "start").Count();
+            list.TasksClosed = db.ToDoTasks.Where(x => x.TaskStatus == "done").Count();
+            list.Projects = db.ToDoProjects.Count();
+            list.ProjectsActive = db.ToDoTasks.Where(z => z.TaskStatus != "done").GroupBy(y => y.Project).Count();
+            return list;
         }
 
         // GET: api/ToDoTasks/5
