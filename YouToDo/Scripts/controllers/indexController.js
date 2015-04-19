@@ -14,4 +14,11 @@ youToDoApp.controller('indexController', ['$scope', '$injector', 'authService', 
             return true;
         return false;
     }
+
+    $scope.isAdmin = function () {
+        //console.log($scope.authentication.role);
+        if ($scope.authentication.role == "Admin")
+            return true;
+        return false;
+    }
 }]);

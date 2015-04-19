@@ -12,6 +12,12 @@
 <hr>-->
 <div class="row">
     <div class="col-md-6 col-md-offset-1">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">Search</span>
+                <input type="text" class="form-control" ng-model="search">
+            </div>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -20,14 +26,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="user in users">
+                <tr ng-repeat="user in users | filter:search">
                     <td>{{$index + 1}}</td>
                     <td>{{user}}</td>
                     <td>
                         <button class="btn btn-success btn-sm" ng-click="addRole(user)">+ Manager</button>
                     </td>
                 </tr>
-                <tr ng-repeat="manager in managers">
+                <tr ng-repeat="manager in managers | filter:search">
                     <td>{{$index + 1}}</td>
                     <td>{{manager}}</td>
                     <td>
