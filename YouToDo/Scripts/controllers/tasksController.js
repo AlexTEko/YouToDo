@@ -1,11 +1,20 @@
 'use strict';
-youToDoApp.controller('tasksController', ['$scope', 'tasksService', function ($scope, tasksService) {
+youToDoApp.controller('tasksController', ['$scope', 'tasksService', '$rootScope', function ($scope, tasksService, $rootScope) {
     $scope.tasks = [];
     $scope.showModalTask = false;
 
     $scope.getTasks = function () {
         tasksService.getTasks().then(function (results) {
             $scope.tasks = results.data;
+        }, function (error) {
+            //alert(error.data.message);
+        });
+    }
+
+    var countTasks = function () {
+        tasksService.getTasks().then(function (results) {
+            $rootScope.counttasks = results.data.length;
+            console.log($rootScope.counttasks);
         }, function (error) {
             //alert(error.data.message);
         });
@@ -39,11 +48,13 @@ youToDoApp.controller('tasksController', ['$scope', 'tasksService', function ($s
     $scope.doneTask = function (task) {
         tasksService.doneTask(task).then(function (results) {
             $scope.getTasks();
+            countTasks();
         }, function (error) {
             //alert(error.data.message);
         });
     }
 
     $scope.getTasks();
+    countTasks();
     //setInterval($scope.getTasks, 5000);
 }]);
