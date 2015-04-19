@@ -21,4 +21,17 @@ youToDoApp.controller('indexController', ['$scope', '$injector', 'authService', 
             return true;
         return false;
     }
+
+    var countTasks = function () {
+        if ($scope.authentication.role == "User") {
+            tasksService.getTasks().then(function (results) {
+                $scope.tasks = results.data.length;
+                //console.log(results.data.length);
+            }, function (error) {
+                //alert(error.data.message);
+            });
+        }
+    }
+
+    countTasks();
 }]);

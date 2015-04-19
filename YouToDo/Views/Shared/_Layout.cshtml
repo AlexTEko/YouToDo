@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/loading-bar.min.css" type="text/css">
     <link rel="stylesheet" href="css/date.min.css" type="text/css">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
 </head>
 <body ng-app="YouToDoApp">
     <nav class="navbar navbar-fixed-top" ng-controller="indexController">
@@ -18,14 +24,14 @@
                 <a class="navbar-brand" href="."><span class="glyphicon glyphicon-time" aria-hidden="true"></span> YouToDo</a>
             </div>
             <div>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" ng-cloak>
                     <li><a ng-show="authentication.isAuth && isAdmin()" ui-sref="admin"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Accounts</a></li>
                     <li><a ng-show="authentication.isAuth && isAdmin()" ui-sref="statistic"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Statistic</a></li>
                     <li><a ng-show="authentication.isAuth && !isUser() && !isAdmin()" ui-sref="projects"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> My Projects </a></li>
-                    <li><a ng-show="authentication.isAuth && !isAdmin()" ui-sref="mytasks"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> My Tasks <span class="badge">{{countTasks()}}</span></a></li>
+                    <li><a ng-show="authentication.isAuth && !isAdmin()" ui-sref="mytasks"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> My Tasks <span class="badge">{{tasks}}</span></a></li>
                     <li class="dropdown" ng-hide="!authentication.isAuth">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{authentication.userName}}<span class="caret"></span></a>
+                           aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{authentication.userName}}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#" ng-click="logOut()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a></li>
                         </ul>
