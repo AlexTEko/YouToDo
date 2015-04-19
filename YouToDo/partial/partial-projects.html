@@ -15,8 +15,8 @@
                     <td class="text-uppercase">{{project.Name}}</td>
                     <td class="hidden-xs">{{project.Description}}</td>
                     <td>
-                        <button class="btn btn-info" ng-click="viewProject(project.Id)">Open</button>
-                        <button class="btn btn-danger" ng-click="deleteProject(project.Id)">Delete</button>                        
+                        <button class="btn btn-info" ng-click="viewProject(project.Id)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Open</button>
+                        <button class="btn btn-danger" ng-click="deleteProject(project.Id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</button>                        
                     </td>
                 </tr>
             </tbody>
@@ -29,7 +29,7 @@
             <fieldset>
                 <div class="form-group">
                     <div class="col-md-1 controls text-center">
-                        <button id="addButton" class="btn btn-primary" type="submit" ng-click="addProject()">New project</button>
+                        <button id="addButton" class="btn btn-success" type="submit" ng-click="addProject()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New project</button>
                     </div>
                 </div>
             </fieldset>

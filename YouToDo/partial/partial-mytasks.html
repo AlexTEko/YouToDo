@@ -17,9 +17,9 @@
                     <td class="hidden-xs">{{task.TaskDescription}}</td>
                     <td class="hidden-xs">{{task.TaskDateDeadline | date:'yyyy-MM-dd HH:mm'}}</td>
                     <td>
-                        <button class="btn btn-default" ng-click="openTask($index)">Open</button>
-                        <button class="btn btn-info" ng-show={{isAssigned($index)}} ng-click="startTask(task)">Start</button>
-                        <button class="btn btn-success" ng-show={{isStart($index)}} ng-click="doneTask(task)">Done</button>
+                        <button class="btn btn-default" ng-click="openTask($index)"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Open</button>
+                        <button class="btn btn-info" ng-show={{isAssigned($index)}} ng-click="startTask(task)"><span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span> Start</button>
+                        <button class="btn btn-success" ng-show={{isStart($index)}} ng-click="doneTask(task)"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Done</button>
                     </td>
                 </tr>
             </tbody>

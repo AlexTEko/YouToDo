@@ -189,6 +189,8 @@
   <ItemGroup>
     <Content Include="Css\date.min.css" />
     <Content Include="Css\loading-bar.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="partial\partial-admin.html" />
     <Content Include="partial\partial-statistic.html" />
     <Content Include="Scripts\angular-local-storage.min.js" />
@@ -203,10 +205,13 @@
     <Content Include="Scripts\controllers\tasksController.js" />
     <Content Include="Scripts\controllers\usersController.js" />
     <Content Include="Css\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\2012 SERVER.pubxml" />
     <None Include="Properties\PublishProfiles\youtodo.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
